@@ -17,6 +17,7 @@ public class PostMapper {
 
         return Post
                 .builder()
+                .idPost(postEntity.getId())
                 .title(postEntity.getTitle())
                 .content(postEntity.getContent())
                 .image(postEntity.getImage())
@@ -29,6 +30,7 @@ public class PostMapper {
 
         return PostEntity
                 .builder()
+                .id(post.getIdPost())
                 .title(post.getTitle())
                 .content(post.getContent())
                 .date(post.getDate())

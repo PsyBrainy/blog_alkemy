@@ -13,23 +13,32 @@
                 <thead>
                   <tr>
                     <th scope="col">Titulo</th>
-                    <th scope="col">Opciones</th>
+                    <th scope="col">Detalles</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each=" post: ${posts}">
-                      <td th:text="${post.title}"></td>
-                      <td>
+                  <tr th:each=" post:${posts}">
+                    
+                    <td th:text="${post.title}"></td>
+                    <td>
                         <a class="btn btn-success btn-sm" th:href="@{/post/} + ${post.idPost}">
                           Detalles
                         </a>
-                        <a class="btn btn-success btn-sm" href="">
+                    </td>
+                    <td>
+                      <a class="btn btn-success btn-sm" href="">
                           Editar
                         </a>
-                        <a class="btn btn-success btn-sm" href="">
+                    </td>
+                    <td>
+                      <a class="btn btn-success btn-sm" th:href="@{/post/delete/} + ${post.idPost}" 
+                      onclick="return confirm('¿Esta seguro que desea eliminar el post?');">
                           Eliminar
                         </a>
-                      </td>
+                    </td>
+
                     
                   </tr>
                 </tbody>
