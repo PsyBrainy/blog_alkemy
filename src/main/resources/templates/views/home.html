@@ -9,6 +9,14 @@
 
     <div class="container">
 
+      <div class="container">
+
+        <a class="btn btn-primary btn-sm" th:href="@{/post/createPost}" title="Crear Nuevo Post">
+                    Nuevo Post
+                </a>
+
+    </div>
+
         <table class="table table-dark table-striped">
                 <thead>
                   <tr>
@@ -28,7 +36,7 @@
                         </a>
                     </td>
                     <td>
-                      <a class="btn btn-success btn-sm" href="">
+                      <a class="btn btn-success btn-sm" th:href="@{/post/edit/} + ${post.idPost}">
                           Editar
                         </a>
                     </td>

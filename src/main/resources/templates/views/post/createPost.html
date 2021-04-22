@@ -8,6 +8,11 @@
     <header th:replace="plantilla/template :: header"></header>
 
     <div class="container">
+
+
+
+
+        
     
         <div class="card">
             
@@ -15,6 +20,8 @@
             <div class="card-body"></div>
 
             <form th:action="@{/post/savePost}" th:object="${post}" method="post">
+
+                <input type="hidden" th:field="*{idPost}">
             
             <input class="form-control form-control-lg" type="text" id="title" th:field="*{title}" placeholder="Titulo" aria-label="title">
 
