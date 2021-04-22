@@ -20,5 +20,5 @@ public class Post {
 
     private String image;
 
-    private LocalDateTime date = LocalDateTime.now();
+    private LocalDateTime date;
 }

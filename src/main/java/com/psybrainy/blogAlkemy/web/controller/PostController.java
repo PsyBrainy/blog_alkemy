@@ -33,11 +33,15 @@ public class PostController {
 
     @GetMapping("/{id}")
     public String getPostById(@PathVariable("id") long idPost, Model model){
-        Post post = postService.getPostById(idPost).orElseThrow();
+        Post post = postService.getPostById(idPost).orElse(null);
 
         model.addAttribute("post", post);
 
-        return "/views/post/postById";
+        if (post != null){
+            return "/views/post/postById";
+        }else {
+            return "/views/error";
+        }
     }
 
     @GetMapping("/createPost")
@@ -61,6 +65,18 @@ public class PostController {
         postService.save(post);
 
         return "redirect:/post";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Long id, Model model){
+        Post post = postService.getPostById(id).orElseThrow();
+        List<Category> categoryList = categoryService.getAll();
+
+        model.addAttribute("categories", categoryList);
+        model.addAttribute("title", "Editar Post");
+        model.addAttribute("post", post);
+
+        return "/views/post/createPost";
     }
 
     @GetMapping("delete/{id}")
