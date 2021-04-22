@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data @Builder @NoArgsConstructor @AllArgsConstructor
 public class Post {
@@ -20,5 +22,5 @@ public class Post {
 
     private String image;
 
-    private Timestamp date;
+    private LocalDateTime date = LocalDateTime.now();
 }

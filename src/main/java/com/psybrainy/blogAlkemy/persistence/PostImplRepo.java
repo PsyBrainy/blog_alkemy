@@ -40,6 +40,12 @@ public class PostImplRepo implements PostRepository {
     @Override
     public Post savePost(Post post) {
         PostEntity postEntity = repo.save(mapper.toPostEntity(post));
+
         return mapper.toPost(postEntity);
+    }
+
+    @Override
+    public void delete(Long postId) {
+        repo.deleteById(postId);
     }
 }

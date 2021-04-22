@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -34,5 +34,5 @@ public class PostEntity {
     private CategoryEntity category;
 
     @Column(name = "date")
-    private Timestamp date;
+    private LocalDateTime date;
 }

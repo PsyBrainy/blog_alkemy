@@ -1,10 +1,12 @@
 package com.psybrainy.blogAlkemy.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
-@Data @Builder
+@Data @Builder @AllArgsConstructor @NoArgsConstructor
 public class Category {
 
     private Long id;

@@ -25,4 +25,12 @@ public class PostService {
     public void save(Post post){
         repo.savePost(post);
     }
+
+    public boolean deletePost(Long postId){
+        return getPostById(postId)
+                .map(post -> {
+                    repo.delete(postId);
+                    return true;
+                }).orElse(false);
+    }
 }
