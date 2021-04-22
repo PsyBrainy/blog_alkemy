@@ -14,26 +14,30 @@
             <div class="card-header bg-dark bg-white" th:text="${title}"></div>
             <div class="card-body"></div>
 
-            <form action="@{/post/savePost}" th:object="${post}">
+            <form th:action="@{/post/savePost}" th:object="${post}" method="post">
             
             <input class="form-control form-control-lg" type="text" id="title" th:field="*{title}" placeholder="Titulo" aria-label="title">
 
             <div class="mb-3">
-                <label for="content" class="form-label" th:field="*{content}">Contenido de post</label>
-                <textarea class="form-control" id="content" rows="3"></textarea>
+                <label for="content" class="form-label"  >Contenido de post</label>
+                <textarea class="form-control" type="text" id="content" th:field="*{content}" rows="3"></textarea>
             </div>
+
+            <input class="form-control form-control-lg" type="text" id="image" th:field="*{image}" placeholder="Imagen" aria-label="image">
             
 
             <select th:field="*{category}" class="form-select" aria-label="Default select example" id="category">
-            <option selected>Open this select menu</option>
+
             <option th:each=" category: ${categories}"
-                    th:value="${category.id}"
+                    th:value="${category.name}"
                     th:text="${category.name}"></option>
             </select>
+
+                <div class="card-footer bg-dark">
+                    <input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
+                </div>
             
             </form>
-
-            
 
         </div>
 
