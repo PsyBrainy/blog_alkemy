@@ -11,13 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/home")
 public class HomeController {
 
     @Autowired
     private PostService postService;
 
-    @GetMapping
+    @GetMapping({"/home", "/index","/"})
     public String home(Model model){
 
         List<Post> postList = postService.getAll();
