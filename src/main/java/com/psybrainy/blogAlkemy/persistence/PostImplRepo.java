@@ -34,7 +34,7 @@ public class PostImplRepo implements PostRepository {
     @Override
     public Optional<Post> getPostById(long idPost) {
 
-        return repo.findById(idPost).map(postEntity -> mapper.toPost(postEntity));
+        return repo.findById(idPost).filter(postEntity -> !postEntity.getDeleted()).map(postEntity -> mapper.toPost(postEntity));
     }
 
     @Override
@@ -46,6 +46,9 @@ public class PostImplRepo implements PostRepository {
 
     @Override
     public void delete(Long postId) {
-        repo.deleteById(postId);
+        PostEntity postEntity = repo.findById(postId).orElseThrow();
+        postEntity.setDeleted(true);
+
+        repo.save(postEntity);
     }
 }
