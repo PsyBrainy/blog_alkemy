@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface PostCrudRepository extends CrudRepository<PostEntity,Long> {
 
-    @Query(value = "SELECT * FROM post ORDER BY post.date DESC",
+    @Query(value = "SELECT * FROM post WHERE deleted = 0 ORDER BY post.date DESC",
             nativeQuery = true)
     List<PostEntity> getAllByDate();
 }

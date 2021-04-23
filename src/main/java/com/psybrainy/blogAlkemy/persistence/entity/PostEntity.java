@@ -29,6 +29,9 @@ public class PostEntity {
     @Column(name = "image")
     private String image;
 
+    @Column(name = "deleted")
+    private Boolean deleted;
+
     @ManyToOne
     @JoinColumn(name = "id_category")
     private CategoryEntity category;
