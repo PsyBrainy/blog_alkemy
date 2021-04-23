@@ -2,17 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="plantilla/template :: head">
     <meta charset="UTF-8">
-    <title>Blog Alkemy</title>
+    <title>Crear Post</title>
 </head>
 <body>
     <header th:replace="plantilla/template :: header"></header>
 
     <div class="container">
-
-
-
-
-        
     
         <div class="card">
             
@@ -24,10 +19,16 @@
                 <input type="hidden" th:field="*{idPost}">
             
             <input class="form-control form-control-lg" type="text" id="title" th:field="*{title}" placeholder="Titulo" aria-label="title">
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('title')}"
+                th:errors="*{title}">
+            </small>
 
             <div class="mb-3">
                 <label for="content" class="form-label"  >Contenido de post</label>
                 <textarea class="form-control" type="text" id="content" th:field="*{content}" rows="3"></textarea>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('content')}"
+                       th:errors="*{content}">
+                </small>
             </div>
 
             <input class="form-control form-control-lg" type="text" id="image" th:field="*{image}" placeholder="Imagen" aria-label="image">

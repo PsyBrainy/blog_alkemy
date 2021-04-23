@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="plantilla/template :: head">
     <meta charset="UTF-8">
-    <title>Blog Alkemy</title>
+    <title>Lista de Posts</title>
 </head>
 <body>
     <header th:replace="plantilla/template :: header"></header>
@@ -10,7 +10,10 @@
     <div class="container">
 
       <div class="card mb-3" th:each=" post: ${posts}">
-      <img th:src="${post.image}" class="card-img-top" alt="...">
+          <div th:if="@{post.image != ''}">
+              <img th:src="${post.image}" class="card-img-top">
+          </div>
+      
           <div class="card-body">
               <h5 th:text="${post.title}" class="card-title"></h5>
               <p th:text="${post.content}" class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>

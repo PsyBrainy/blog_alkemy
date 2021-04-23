@@ -7,8 +7,11 @@ import com.psybrainy.blogAlkemy.domain.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -58,7 +61,18 @@ public class PostController {
     }
 
     @PostMapping("/savePost")
-    public String savePost(@ModelAttribute Post post){
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public String savePost(@Valid @ModelAttribute Post post , BindingResult result, Model model){
+
+        List<Category> categoryList = categoryService.getAll();
+
+        if (result.hasErrors()){
+            model.addAttribute("title", "Crear nuevo Post");
+            model.addAttribute("post", post);
+            model.addAttribute("categories", categoryList);
+
+            return "/views/post/createPost";
+        }
 
         post.setDate(LocalDateTime.now());
 
@@ -83,6 +97,6 @@ public class PostController {
     public String delete(@PathVariable("id") Long postId){
         postService.deletePost(postId);
 
-        return "redirect:/post";
+        return "redirect:/home";
     }
 }

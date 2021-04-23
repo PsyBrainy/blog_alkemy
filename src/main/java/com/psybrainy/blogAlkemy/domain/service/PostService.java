@@ -23,6 +23,9 @@ public class PostService {
     }
 
     public void save(Post post){
+        if (post.getImage()== null){
+            post.setImage("");
+        }
         repo.savePost(post);
     }
 
